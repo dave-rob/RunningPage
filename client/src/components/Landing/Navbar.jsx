@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/Header.css' // Import the CSS file
+import '../../styles/Landing.css' // Import the CSS file
 import { BrowserRouter,Link } from 'react-router-dom'; // Use Link for navigation
 
 const Navbar = () => {

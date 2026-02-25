@@ -1,4 +1,4 @@
-import '../../styles/Header.css'
+import '../../styles/Landing.css'
 import { Container } from "@chakra-ui/react"
 
 const Title = () => {

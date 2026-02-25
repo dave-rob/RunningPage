@@ -47,7 +47,7 @@
     margin:0;
 }
 
-h1{
+.text h1{
     font-size: 5rem;
 }
 
@@ -56,4 +56,32 @@ h1{
   font-size: 2rem;
   display: flex;
   justify-content: center;
+}
+
+.countdown-section {
+  background-color: rgb(66, 66, 66);
+  margin: auto;
+  width: 60%;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.countdown-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+  padding:10px;
+}
+
+.countdown-section h1 {
+  padding:10px;
+}
+
+.countdown-value{
+  background-color: gray;
+  padding: 5px;
+  font-size: 3rem;
+  width: 20%;
+  border-radius: 10px;
 }
