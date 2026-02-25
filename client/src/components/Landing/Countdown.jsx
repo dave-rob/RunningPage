@@ -33,7 +33,12 @@ const CountdownTimer = ({ targetDate, marathon }) => {
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
 
   if (days + hours + minutes + seconds <= 0) {
-    return <span>Its Race Day!</span>;
+    return (
+      <div class="countdown-section">
+        <h1>Countdown to the {marathon}</h1>
+         <h2>Its Race Day!</h2>
+         </div>
+         )
   } else {
     return (
       <div class="countdown-section">

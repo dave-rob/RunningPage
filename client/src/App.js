@@ -5,7 +5,7 @@ import CountdownTimer from './components/Landing/Countdown';
 import './App.css';
 
 function App() {
-  const raceDate = '2026-05-17T09:00:00'
+  const raceDate = '2026-05-17T06:00:00'
   return (
     <div>
       <Navbar />
