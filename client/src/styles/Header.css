@@ -50,3 +50,10 @@
 h1{
     font-size: 5rem;
 }
+
+.quote{
+  color: gainsboro;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+}
