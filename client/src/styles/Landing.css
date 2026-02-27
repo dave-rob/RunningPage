@@ -1,0 +1,98 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 2rem;
+  background-color: #333;
+  color: white;
+}
+
+.logo a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.main-menu ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.main-menu a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.main-menu a:hover {
+  color: #FC4C02;
+}
+
+
+.hero {
+    /* background-image: url('../images/test-bg-image.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%; */
+    background-color: dimgray
+}
+
+.text div{
+    margin:0;
+}
+
+.text h1{
+    font-size: 5rem;
+}
+
+.quote{
+  color: gainsboro;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.countdown-section {
+  background-color: rgb(66, 66, 66);
+  margin: auto;
+  /* width: 60%; */
+  height: 100%;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.countdown-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+  padding:10px;
+}
+
+.countdown-section h1 {
+  padding:10px;
+}
+
+.countdown-value{
+  background-color: gray;
+  padding: 5px;
+  font-size: 3rem;
+  width: 20%;
+  border-radius: 10px;
+}
+
+.recent-runs{
+  text-align: center;
+}
+
+.run-container{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  column-gap:10px;
+}
+
+.map{
+  margin:auto;
+}
