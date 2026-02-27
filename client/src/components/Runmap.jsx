@@ -27,7 +27,7 @@ const RunMap = ({ encodedPolyline }) => {
     const y = height - (lat - minLat) * scale; // flip Y axis
     return `${x},${y}`;
   });
-
+    
   return (
       // <svg viewBox="0 0 500 500" style={{ width: "100%", height: "auto" }}>
       <svg
