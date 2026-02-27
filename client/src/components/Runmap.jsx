@@ -1,33 +1,3 @@
-// import { MapContainer, TileLayer, Polyline } from "react-leaflet";
-// import polyline from "@mapbox/polyline";
-
-// const RunMap = ({ encodedPolyline }) => {
-//   if (!encodedPolyline) return null;
-
-//   // Decode Strava polyline into coordinates
-//   const decoded = polyline.decode(encodedPolyline);
-
-//   // Convert to Leaflet format
-//   const positions = decoded.map(([lat, lng]) => [lat, lng]);
-
-//   return (
-//     <MapContainer
-//       center={positions[0]}
-//       zoom={13}
-//       style={{ height: "300px", width: "100%" }}
-//       scrollWheelZoom={false}
-//     >
-//       <TileLayer
-//         attribution='&copy; OpenStreetMap contributors'
-//         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-//       />
-//       <Polyline positions={positions} color="#FC4C02" weight={4} />
-//     </MapContainer>
-//   );
-// };
-
-// export default RunMap;
-
 import polyline from "@mapbox/polyline";
 
 const RunMap = ({ encodedPolyline }) => {
@@ -63,8 +33,7 @@ const RunMap = ({ encodedPolyline }) => {
       <svg
       width={width}
       height={height}
-      // style={{ border: "1px solid #ddd" }}
-      padding="5px"
+      className="map"
     >
       <polyline
         points={svgPoints.join(" ")}

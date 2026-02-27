@@ -1,7 +1,7 @@
 import '../../styles/Landing.css'
 import { useState, useEffect } from 'react'
 import RunMap from '../Runmap';
-
+import { Card, Image, Text, Stack, Flex, Box, Container} from '@chakra-ui/react';
 const mockRuns = [
   {
     "resource_state": 2,
@@ -648,7 +648,12 @@ const mockRuns = [
     "has_kudoed": false
   }
 ]
-
+const formatPace = (speed) => {
+  const pace = 26.8224 / speed;
+  const minutes = Math.floor(pace);
+  const seconds = Math.round((pace - minutes) * 60);
+  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+};
 
 
 const RecentRuns = () => {
@@ -658,21 +663,50 @@ const RecentRuns = () => {
   );
     return (
     <div class="recent-runs">
-      <h2>Recent Runs</h2>
+      <Text fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }} color={"gray.200"}>Recent Runs</Text>
       <div class="run-container">
-
+        <Stack
+                    justify={"center"}
+                    spacing={{ base: 8, md: 10 }}
+                    py={{ base: 20, md: 28 }}
+                    direction={{ base: "column", lg: "row" }} >
+          <Flex wrap={"wrap"} gap={"10"} justify={"center"}>
       {onlyRuns.map((run) => (
-        <div key={run.id}>
-          <h3>{run.name}</h3>
-          <RunMap encodedPolyline={ run.map.summary_polyline }/>
-          <p>
-            {(run.distance / 1609.34).toFixed(2)} miles —{" "}
-            {(run.moving_time / 60).toFixed(0)} min
-          </p>
-        </div>
+         <Card.Root  overflow="hidden" key={run.id} backgroundColor={"gray.800"} color={'white'}>
+          <Container paddingY={"5px"}>
+            <RunMap encodedPolyline={ run.map.summary_polyline }/>
+          </Container>
+      
+      <Card.Body gap="2" backgroundColor={"gray.900"}>
+        <Card.Title>{run.name}</Card.Title>
+        <Card.Description>
+          <Flex gap="4" wrap="wrap">
+            <Box width={"40%"}>
+              <Text color={"#FC4C02"}>Distance</Text>
+              <Text color={"gray.400"}>{(run.distance / 1609.34).toFixed(2)} miles</Text>
+            </Box>
+            <Box width={"40%"}>
+              <Text color={"#FC4C02"}>Time</Text>
+              <Text color={"gray.400"}>{(run.moving_time / 60).toFixed(0)} min</Text>
+            </Box>
+            <Box width={"40%"}>
+              <Text color={"#FC4C02"}>Avg. Pace</Text>
+              <Text color={"gray.400"}>{formatPace(run.average_speed)} min/mile</Text>
+            </Box>
+            <Box width={"40%"}>
+              <Text color={"#FC4C02"}>Avg. HR</Text>
+              <Text color={"gray.400"}>{run.average_heartrate} bpm</Text>
+            </Box>
+          </Flex>
+        </Card.Description>
+      </Card.Body>
+    </Card.Root>
       ))}
+      </Flex>
+      </Stack>
          </div>
     </div>
+
   );
 };
 
