@@ -150,19 +150,24 @@ const formatPace = (speed) => {
   return `${minutes}:${seconds.toString().padStart(2, "0")}`;
 };
 
+const formatDate = (startDate) => {
+  return startDate.split("T", 1)
+}
+
 const RecentRuns = () => {
   const [runs, setRuns] = useState([]);
   useEffect(() => {
     const fetchActivities = async () => {
-      const response = await fetch("http://localhost:5000/api/activities");
-      // const response = await fetch(
-      //   import.meta.env.VITE_API_URL + "api/activities",
-      // );
+      // const response = await fetch("http://localhost:5000/api/activities");
+      const response = await fetch(
+        import.meta.env.VITE_API_URL + "api/activities",
+      );
       const activities = await response.json();
 
       const onlyRuns = activities.filter((activity) => activity.type === "Run");
 
-      setRuns(onlyRuns);
+      const lastFiveRuns = onlyRuns.slice(0, 5)
+      setRuns(lastFiveRuns);
     };
 
     fetchActivities();
@@ -200,7 +205,11 @@ const RecentRuns = () => {
                 </Container>
 
                 <Card.Body gap="2" backgroundColor={"gray.900"}>
+                <Box>
                   <Card.Title>{run.name}</Card.Title>
+                  <Text fontSize={"0.75rem"} marginTop={"-1"}>{formatDate(run.start_date_local)}</Text>
+                </Box>
+                  
                   <Flex gap="4" wrap="wrap" width={"260px"}>
                     <Box width={"40%"}>
                       <Text color={"#FC4C02"}>Distance</Text>
