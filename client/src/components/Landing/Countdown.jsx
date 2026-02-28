@@ -48,7 +48,7 @@ const TimeBlock = ({ value, label }) => {
         {value}
       </Text>
       <Text
-        fontSize={{ base: "0.7rem", md: "sm"}}
+        fontSize={{ base: "0.5rem", md: "sm"}}
         textTransform="uppercase"
         letterSpacing="wide"
         opacity={0.7}
