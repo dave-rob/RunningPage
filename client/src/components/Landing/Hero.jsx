@@ -39,7 +39,7 @@ const Title = () => {
                     </Stack>
                     </Stack>
                     <Flex flex={1} justify={"center"} align={"center"} position={"relative"} w={"full"}>
-                    <Box position={"relative"} height={"300px"} rounded={"2xl"} boxShadow={"2xl"} width={"full"} overflow={"hidden"}>
+                    <Box position={"relative"} height={"30%"} rounded={"2xl"} boxShadow={"2xl"} width={"full"} overflow={"hidden"}>
                         <CountdownTimer targetDate={ raceDate } marathon={"Colfax Marathon"}/>
                     </Box>
                     </Flex>

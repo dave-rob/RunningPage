@@ -1,8 +1,12 @@
 
-import Navbar from './components/Landing/Navbar';
+import Navbar from './components/Navbar';
 import Hero from './components/Landing/Hero'
 import CountdownTimer from './components/Landing/Countdown';
 import RecentRuns from './components/Landing/Recent';
+import Landing from './pages/Landing';
+import About from './pages/About';
+import { Routes } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import './App.css';
 
 function App() {
@@ -10,9 +14,10 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Hero/>
-      <RecentRuns />
-      <CountdownTimer targetDate={ raceDate } marathon={"Colfax Marathon"}/>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/About" element={<About />} />
+      </Routes>
     </div>
   );
 }

@@ -10,7 +10,6 @@ import {
   Box,
   Container,
 } from "@chakra-ui/react";
-import { chakra } from "@chakra-ui/react";
 // const mockRuns = [
 //   {
 //     "resource_state": 2,
@@ -155,10 +154,10 @@ const RecentRuns = () => {
   const [runs, setRuns] = useState([]);
   useEffect(() => {
     const fetchActivities = async () => {
-      // const response = await fetch("http://localhost:5000/api/activities");
-      const response = await fetch(
-        import.meta.env.VITE_API_URL + "api/activities",
-      );
+      const response = await fetch("http://localhost:5000/api/activities");
+      // const response = await fetch(
+      //   import.meta.env.VITE_API_URL + "api/activities",
+      // );
       const activities = await response.json();
 
       const onlyRuns = activities.filter((activity) => activity.type === "Run");
@@ -170,14 +169,14 @@ const RecentRuns = () => {
   }, []);
   return (
     <div className="recent-runs">
-      <Text fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }} color={"gray.200"}>
+      <Text fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }} color={"gray.200"} padding={"2rem 0 0 0"}>
         Recent Runs
       </Text>
       <div className="run-container">
         <Stack
           justify={"center"}
           spacing={{ base: 8, md: 10 }}
-          py={{ base: 20, md: 28 }}
+          py={{ base: 15, md: 25 }}
           direction={{ base: "column", lg: "row" }}
         >
           <Flex wrap={"wrap"} gap={"10"} justify={"center"}>
@@ -189,8 +188,7 @@ const RecentRuns = () => {
                 color={"white"}
               >
                 <Container paddingY={"5px"}>
-                  {/* <RunMap encodedPolyline={ run.map.summary_polyline }/> */}
-                  {run.map?.summary_polyline?.length > 0 ? (
+                  {run.map.summary_polyline.length > 0 ? (
                     <RunMap encodedPolyline={run.map.summary_polyline} />
                   ) : (
                     <Image
@@ -203,8 +201,7 @@ const RecentRuns = () => {
 
                 <Card.Body gap="2" backgroundColor={"gray.900"}>
                   <Card.Title>{run.name}</Card.Title>
-                  {/* <Card.Description> */}
-                  <Flex gap="4" wrap="wrap">
+                  <Flex gap="4" wrap="wrap" width={"260px"}>
                     <Box width={"40%"}>
                       <Text color={"#FC4C02"}>Distance</Text>
                       <Text color={"gray.400"}>
@@ -225,12 +222,13 @@ const RecentRuns = () => {
                     </Box>
                     <Box width={"40%"}>
                       <Text color={"#FC4C02"}>Avg. HR</Text>
-                      <Text color={"gray.400"}>
-                        {run.average_heartrate} bpm
-                      </Text>
+                      
+                      {run.average_heartrate > 0 ? (
+                        <Text color={"gray.400"}>{run.average_heartrate} bpm</Text> ):
+                        (<Text color={"gray.400"}> -- bpm</Text>
+                      )}
                     </Box>
                   </Flex>
-                  {/* </Card.Description> */}
                 </Card.Body>
               </Card.Root>
             ))}

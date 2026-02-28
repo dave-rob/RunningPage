@@ -13,6 +13,7 @@
     "@chakra-ui/react": "^3.33.0",
     "@emotion/react": "^11.14.0",
     "@mapbox/polyline": "^1.2.1",
+    "lucide-react": "^0.575.0",
     "prettier": "^3.8.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
