@@ -4,23 +4,23 @@ export default function About() {
   return (
     <Container maxW="4xl" py={16} backgroundColor={"blackAlpha.900"} marginTop={10} borderRadius={"1rem"}>
     <Flex color={"gainsboro"} justifyContent={"space-evenly"}>
-    <Image src="/images/me.jpg" boxSize="250px" borderRadius="full" />
+    <Image alignSelf={"center"} src="/images/me.jpg" boxSize={{base: "150px", sm:"250px"}} borderRadius="full" />
     <Stack alignSelf={"center"}>
         <Text>Personal Records 🔥</Text>
         <Box>
-            <Text >🏆Marathon: 3:58:55</Text>
+            <Text fontSize={{base:"xs", sm:"xl"}} >🏆Marathon: 3:58:55</Text>
              <Text fontSize={"0.65rem"}>(2025 Boulderthon)</Text>
         </Box>
         <Box>
-            <Text>🏆Half-Marathon: 1:35:27 </Text>
+            <Text fontSize={{base:"xs", sm:"xl"}}>🏆Half-Marathon: 1:35:27 </Text>
             <Text fontSize={"0.65rem"}>(2020 Verona Half Marathon)</Text>
         </Box>
         <Box>
-            <Text>🏆10K: 41:41 </Text>
+            <Text fontSize={{base:"xs", sm:"xl"}}>🏆10K: 41:41 </Text>
             <Text fontSize={"0.65rem"}>(2020 Vicenza 10 Miler)</Text>
         </Box>
         <Box>
-            <Text>🏆5K: 19:58 </Text>
+            <Text fontSize={{base:"xs", sm:"xl"}}>🏆5K: 19:58 </Text>
             <Text fontSize={"0.65rem"}>(2020 Vicenza 10 Miler)</Text>
         </Box>
     </Stack>

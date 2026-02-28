@@ -34,21 +34,21 @@ const TimeBlock = ({ value, label }) => {
   return (
     <Box
       bg="gray.800"
-      px={{ base: 6, md: 10 }}
+      px={{ base: 2, md: 10, sm:6 }}
       py={{ base: 4, md: 6 }}
       borderRadius="xl"
       boxShadow="lg"
-      minW={{ base: "80px", md: "120px" }}
+      minW={{ base: "60px", md: "120px", sm: "80px"}}
     >
       <Text
-        fontSize={{ base: "1xl", md: "3xl" }}
+        fontSize={{ base: "1xl", md: "3xl", sm:"1xl" }}
         fontWeight="bold"
         lineHeight="1"
       >
         {value}
       </Text>
       <Text
-        fontSize={{ base: "0.5rem", md: "sm"}}
+        fontSize={{ base: "0.5rem", md: "sm", sm: "0.75rem"}}
         textTransform="uppercase"
         letterSpacing="wide"
         opacity={0.7}
@@ -64,10 +64,23 @@ const CountdownTimer = ({ targetDate, marathon }) => {
 
   if (days + hours + minutes + seconds <= 0) {
     return (
-      <div class="countdown-section">
-        <h1>Countdown to the {marathon}</h1>
+       <Box
+      bg="gray.900"
+      color="white"
+      py={{ base: 10, md: 16 }}
+      px={{ base: 4, md: 8 }}
+      textAlign="center"
+      height={"100%"}
+    >
+        <Heading
+        fontSize={{ base: "1xl", md: "4xl", sm: "2xl" }}
+        mb={{ base: 4, md: 10, sm:6 }}
+        fontWeight="bold"
+      >
+        Countdown to the {marathon}
+      </Heading>
          <h2>Its Race Day!</h2>
-         </div>
+         </Box>
          )
   } else {
     return (
@@ -80,8 +93,8 @@ const CountdownTimer = ({ targetDate, marathon }) => {
       height={"100%"}
     >
       <Heading
-        fontSize={{ base: "2xl", md: "4xl" }}
-        mb={{ base: 6, md: 10 }}
+        fontSize={{ base: "1xl", md: "4xl", sm: "2xl" }}
+        mb={{ base: 4, md: 10, sm:6 }}
         fontWeight="bold"
       >
         Countdown to the {marathon}
