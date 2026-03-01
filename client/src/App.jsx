@@ -1,13 +1,11 @@
 
 import Navbar from './components/Navbar';
-import Hero from './components/Landing/Hero'
-import CountdownTimer from './components/Landing/Countdown';
-import RecentRuns from './components/Landing/Recent';
 import Landing from './pages/Landing';
 import About from './pages/About';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import './App.css';
+import Footer from './components/Footer';
 
 function App() {
   const raceDate = '2026-05-17T06:00:00'
@@ -18,6 +16,7 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/About" element={<About />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

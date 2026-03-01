@@ -1,4 +1,5 @@
 import polyline from "@mapbox/polyline";
+import { useBreakpointValue } from "@chakra-ui/react";
 
 const RunMap = ({ encodedPolyline }) => {
   if (!encodedPolyline) return null;
@@ -15,8 +16,10 @@ const RunMap = ({ encodedPolyline }) => {
   const minLng = Math.min(...lngs);
   const maxLng = Math.max(...lngs);
 
-  const width = 250;
-  const height = 250;
+  const size = useBreakpointValue({ base: 150, md: 250 });
+
+  const width = size;
+  const height = size;
 
   const scaleX = width / (maxLng - minLng);
   const scaleY = height / (maxLat - minLat);

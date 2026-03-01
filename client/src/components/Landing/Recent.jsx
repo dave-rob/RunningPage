@@ -158,10 +158,10 @@ const RecentRuns = () => {
   const [runs, setRuns] = useState([]);
   useEffect(() => {
     const fetchActivities = async () => {
-      const response = await fetch("http://localhost:5000/api/activities");
-      // const response = await fetch(
-      //   import.meta.env.VITE_API_URL + "api/activities",
-      // );
+      // const response = await fetch("http://localhost:5000/api/activities");
+      const response = await fetch(
+        import.meta.env.VITE_API_URL + "api/activities",
+      );
       const activities = await response.json();
 
       const onlyRuns = activities.filter((activity) => activity.type === "Run");
@@ -198,8 +198,8 @@ const RecentRuns = () => {
                   ) : (
                     <Image
                       src="images/treadmill.svg"
-                      width={"250px"}
-                      height={"250px"}
+                      width={{base:150, md:250}}
+                      height={{base:150, md:250}}
                     />
                   )}
                 </Container>
@@ -210,31 +210,31 @@ const RecentRuns = () => {
                   <Text fontSize={"0.75rem"} marginTop={"-1"}>{formatDate(run.start_date_local)}</Text>
                 </Box>
                   
-                  <Flex gap="4" wrap="wrap" width={"260px"}>
-                    <Box width={"40%"}>
-                      <Text color={"#FC4C02"}>Distance</Text>
-                      <Text color={"gray.400"}>
+                  <Flex gap="4" wrap="wrap" width={{base:180, md:260, sm:180}}>
+                    <Box width={"45%"}>
+                      <Text color={"#FC4C02"} fontSize={{base:"sm", md:"md"}}>Distance</Text>
+                      <Text color={"gray.400"} fontSize={{base:"xs", md:"md"}}>
                         {(run.distance / 1609.34).toFixed(2)} miles
                       </Text>
                     </Box>
-                    <Box width={"40%"}>
-                      <Text color={"#FC4C02"}>Time</Text>
-                      <Text color={"gray.400"}>
+                    <Box width={"45%"}>
+                      <Text color={"#FC4C02"} fontSize={{base:"sm", md:"md"}}>Time</Text>
+                      <Text color={"gray.400"} fontSize={{base:"xs", md:"md"}}>
                         {(run.moving_time / 60).toFixed(0)} min
                       </Text>
                     </Box>
-                    <Box width={"40%"}>
-                      <Text color={"#FC4C02"}>Avg. Pace</Text>
-                      <Text color={"gray.400"}>
+                    <Box width={"45%"}>
+                      <Text color={"#FC4C02"} fontSize={{base:"sm", md:"md"}}>Avg. Pace</Text>
+                      <Text color={"gray.400"} fontSize={{base:"xs", md:"md"}}>
                         {formatPace(run.average_speed)} min/mile
                       </Text>
                     </Box>
-                    <Box width={"40%"}>
-                      <Text color={"#FC4C02"}>Avg. HR</Text>
+                    <Box width={"45%"}>
+                      <Text color={"#FC4C02"} fontSize={{base:"sm", md:"md"}}>Avg. HR</Text>
                       
                       {run.average_heartrate > 0 ? (
-                        <Text color={"gray.400"}>{run.average_heartrate} bpm</Text> ):
-                        (<Text color={"gray.400"}> -- bpm</Text>
+                        <Text color={"gray.400"} fontSize={{base:"xs", md:"md"}}>{run.average_heartrate} bpm</Text> ):
+                        (<Text color={"gray.400"} fontSize={{base:"xs", md:"md"}}> -- bpm</Text>
                       )}
                     </Box>
                   </Flex>
