@@ -69,10 +69,10 @@ export default function Navbar() {
             <ChakraLink as={Link} to="/about" color="white" onClick={() => setOpen(false)} _hover={{ color: "#FC4C02" }} _focus={{outline:"none"}}>
               About
             </ChakraLink>
-            <ChakraLink as={Link} to="/contact" color="white" onClick={() => setOpen(false)} _hover={{ color: "#FC4C02" }} _focus={{outline:"none"}}>
-              Contact
+            <ChakraLink as={Link} to="/marathon/colfax" color="white" onClick={() => setOpen(false)} _hover={{ color: "#FC4C02" }} _focus={{outline:"none"}}>
+              Colfax Marathon
             </ChakraLink>
-            <ChakraLink as={Link} to="/login" color="white" onClick={() => setOpen(false)} _hover={{ color: "#FC4C02" }} _focus={{outline:"none"}}>
+            <ChakraLink as={Link} to="/pastraces" color="white" onClick={() => setOpen(false)} _hover={{ color: "#FC4C02" }} _focus={{outline:"none"}}>
               Past Races
             </ChakraLink>
           </VStack>
