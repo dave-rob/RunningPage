@@ -113,7 +113,7 @@ export default function Hero({ raceDate }) {
     }, [emblaApi, onSelect]);
 
     return (
-        <Box position="relative">
+        <Box position="relative" overflow={"hidden"} width={"100vw"}>
             {/* Carousel */}
             <Box
                 ref={emblaRef}
