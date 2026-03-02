@@ -2,6 +2,7 @@
 import Navbar from './components/Navbar';
 import Landing from './pages/Landing';
 import About from './pages/About';
+import Colfax from './pages/Colfax';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import './App.css';
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/About" element={<About />} />
+        <Route path="/Marathon/Colfax" element={<Colfax />} />
       </Routes>
       <Footer />
     </div>
