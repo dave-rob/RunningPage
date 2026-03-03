@@ -1,5 +1,5 @@
-import { Chart, useChart } from "@chakra-ui/charts"
-import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts"
+
+import{useState, useEffect} from "react"
 import RunChart from "../components/RunChart";
 
 const mockRuns = [
@@ -5219,11 +5219,29 @@ return mileage.toFixed(2);
 }
 
 export default function Colfax(){
-  const runs = [];
-  groupRunsByWeek(onlyRuns).map((w) => {
+  const colfaxRuns = [];
+  const [runs, setRuns] = useState([]);
+  useEffect(() => {
+    const fetchActivities = async () => {
+      // const response = await fetch("http://localhost:5000/api/activities");
+      const response = await fetch(
+        import.meta.env.VITE_API_URL + "api/activities",
+      );
+      const activities = await response.json();
+
+      const onlyRuns = activities.filter((activity) => activity.type === "Run");
+
+      // const lastFiveRuns = onlyRuns.slice(0, 5)
+      setRuns(lastFiveRuns);
+    };
+
+    fetchActivities();
+  }, []);
+
+  groupRunsByWeek(runs).map((w) => {
     const week = "Week " + w.weekNum;
     const miles = milesPerWeek(w);
-    runs.push({week: week, miles: miles})
+    colfaxRuns.push({week: week, miles: miles})
   })
 
   return (

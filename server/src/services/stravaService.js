@@ -31,3 +31,22 @@ export const getActivities = async () => {
   );
   return response.data;
 };
+
+export const getColfaxTraining = async () => {
+  const token = await getAccessToken();
+
+  const response = await axios.get(
+    "https://www.strava.com/api/v3/athlete/activities",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json'
+      },
+      params: {
+        after: 1766966400,
+        per_page: 100,
+      },
+    }
+  );
+  return response.data;
+};
