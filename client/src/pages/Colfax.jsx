@@ -1,5 +1,6 @@
 import { Chart, useChart } from "@chakra-ui/charts"
 import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts"
+import RunChart from "../components/RunChart";
 
 const mockRuns = [
   {
@@ -5168,15 +5169,15 @@ const mockRuns = [
 
 
 
-
+ const onlyRuns = mockRuns.filter((activity) => activity.type === "Run");
 
 
   
 function groupRunsByWeek(runs) {
   const weeks = {};
-
+  let index = 0
   runs.forEach(run => {
-    const date = new Date(run.start_date_local);
+    const date = new Date(run.start_date);
 
     // Convert JS day (0=Sun) into Monday-based index
     const day = date.getDay();
@@ -5191,10 +5192,11 @@ function groupRunsByWeek(runs) {
     if (!weeks[weekKey]) {
       const sunday = new Date(monday);
       sunday.setDate(monday.getDate() + 6);
-
+      index++;
       weeks[weekKey] = {
         weekStart: weekKey, // Monday
         weekEnd: sunday.toISOString().split("T")[0], // Sunday
+        weekNum: index,
         runs: []
       };
     }
@@ -5217,57 +5219,22 @@ return mileage.toFixed(2);
 }
 
 export default function Colfax(){
-     const chart = useChart({
-    data: [
-      { miles: 10, month: "January" },
-      {miles: 95, month: "February" },
-      { miles: 87, month: "March" },
-      {miles: 88, month: "May" },
-      {miles: 65, month: "June" },
-      { miles: 90, month: "August" },
-    ],
-    series: [{ name: "miles", color: "teal.solid" }],
+  const runs = [];
+  groupRunsByWeek(onlyRuns).map((w) => {
+    const week = "Week " + w.weekNum;
+    const miles = milesPerWeek(w);
+    runs.push({week: week, miles: miles})
   })
- const onlyRuns = mockRuns.filter((activity) => activity.type === "Run");
+
   return (
     <>
-    <Chart.Root maxH="sm" chart={chart}>
-      <LineChart data={chart.data}>
-        <CartesianGrid stroke={chart.color("border")} vertical={false} />
-        <XAxis
-          axisLine={false}
-          dataKey={chart.key("month")}
-          tickFormatter={(value) => value.slice(0, 3)}
-          stroke={chart.color("border")}
-        />
-        <YAxis
-          axisLine={false}
-          tickLine={false}
-          tickMargin={10}
-          stroke={chart.color("border")}
-        />
-        <Tooltip
-          animationDuration={100}
-          cursor={false}
-          content={<Chart.Tooltip />}
-        />
-        {chart.series.map((item) => (
-          <Line
-            key={item.name}
-            isAnimationActive={false}
-            dataKey={chart.key(item.name)}
-            stroke={chart.color(item.color)}
-            strokeWidth={2}
-            dot={false}
-          />
-        ))}
-      </LineChart>
-    </Chart.Root>
+    <RunChart weeklyRuns={runs}/>
     <div color="gray">
   {groupRunsByWeek(onlyRuns).map((week) => (
     <div key={week.weekStart} >
       <h3>
-        {week.weekStart} → {week.weekEnd}
+        {week.weekStart} → {week.weekEnd}<br/>
+        Week {week.weekNum}
       </h3>
       <p>Total Runs: {week.runs.length}</p>
       <p>distance: {milesPerWeek(week)}</p>
