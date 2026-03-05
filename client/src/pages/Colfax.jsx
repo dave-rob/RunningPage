@@ -5223,16 +5223,13 @@ export default function Colfax(){
   const [runs, setRuns] = useState([]);
   useEffect(() => {
     const fetchActivities = async () => {
-      // const response = await fetch("http://localhost:5000/api/activities");
+      // const response = await fetch("http://localhost:5000/api/activities/marathon/colfax");
       const response = await fetch(
-        import.meta.env.VITE_API_URL + "api/activities?per_page=100&after=1766966400&type=Run",
+        import.meta.env.VITE_API_URL + "api/activities/marathon/colfax",
       );
       const activities = await response.json();
 
-      // const onlyRuns = activities.filter((activity) => activity.type === "Run");
-
-      // const lastFiveRuns = onlyRuns.slice(0, 5)
-      setRuns(lastFiveRuns);
+      setRuns(activities);
     };
 
     fetchActivities();
@@ -5244,11 +5241,13 @@ export default function Colfax(){
     colfaxRuns.push({week: week, miles: miles})
   })
 
+
+
   return (
     <>
-    <RunChart weeklyRuns={runs}/>
+    <RunChart weeklyRuns={colfaxRuns}/>
     <div color="gray">
-  {groupRunsByWeek(onlyRuns).map((week) => (
+  {groupRunsByWeek(runs).map((week) => (
     <div key={week.weekStart} >
       <h3>
         {week.weekStart} → {week.weekEnd}<br/>

@@ -14,54 +14,27 @@ export const getAccessToken = async () => {
   return response.data.access_token;
 };
 
-// export const getActivities = async (req, res) => {
-//   const token = await getAccessToken();
-//   const { after, before, per_page } = req.query;
-
-//     const params = {
-//       per_page: per_page ? Number(per_page) : 50,
-//     };
-
-//     if (after) params.after = Number(after);
-//     if (before) params.before = Number(before);
-//   const response = await axios.get(
-//     "https://www.strava.com/api/v3/athlete/activities",
-//     {
-//       headers: {
-//         Authorization: `Bearer ${token}`,
-//         Accept: 'application/json'
-//       },
-//       params: {
-//        params,
-//       },
-//     }
-//   );
-//   return response.data;
-// };
-
-const STRAVA_BASE_URL = "https://www.strava.com/api/v3";
-
-async function getActivities(filters = {}) {
+export const getActivities = async ({
+  after,
+  before,
+  per_page,
+  type,
+} = {}) => {
   const token = await getAccessToken();
-  const {
-    after,
-    before,
-    per_page = 50,
-    type,
-  } = filters;
 
   const params = {
-    per_page: Number(per_page),
+    per_page: Number(per_page) || 50,
   };
 
   if (after) params.after = Number(after);
   if (before) params.before = Number(before);
 
   const response = await axios.get(
-    `${STRAVA_BASE_URL}/athlete/activities`,
+    "https://www.strava.com/api/v3/athlete/activities",
     {
       headers: {
-        Authorization: `Bearer ${process.env.STRAVA_ACCESS_TOKEN}`,
+        Authorization: `Bearer ${token}`,
+        Accept: "application/json",
       },
       params,
     }
@@ -69,14 +42,9 @@ async function getActivities(filters = {}) {
 
   let activities = response.data;
 
-  // Optional filtering by type (Run, Ride, etc.)
   if (type) {
-    activities = activities.filter(
-      (activity) => activity.type === type
-    );
+    activities = activities.filter(a => a.type === type);
   }
 
   return activities;
-}
-
-module.exports = { getActivities };
+};
