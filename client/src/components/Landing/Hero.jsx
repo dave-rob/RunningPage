@@ -10,6 +10,7 @@ import {
   Flex,
   Image,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useState, useEffect, useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
@@ -94,7 +95,7 @@ export default function Hero({ raceDate }) {
                       sm: "row",
                     }}
                   >
-                    <Button rounded="full" size="lg">
+                    <Button as={Link} to="/marathon/colfax" rounded="full" size="lg" >
                       Check Out My Training
                     </Button>
                   </Stack>
@@ -112,6 +113,7 @@ export default function Hero({ raceDate }) {
                     <CountdownTimer
                       targetDate={raceDate}
                       marathon="Colfax Marathon"
+                      element="hero"
                     />
                   </Box>
                 </Flex>

@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/About" element={<About />} />
-        <Route path="/Marathon/Colfax" element={<Colfax />} />
+        <Route path="/Marathon/Colfax" element={<Colfax race={"Colfax"}/>} />
       </Routes>
       <Footer />
     </div>

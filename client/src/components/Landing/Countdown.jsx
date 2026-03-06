@@ -30,25 +30,28 @@ const getReturnValues = (timeLeft) => {
   return [days, hours, minutes, seconds];
 };
 
-const TimeBlock = ({ value, label }) => {
+const TimeBlock = ({ value, label, element }) => {
+  const timeText = element === "hero" ? { base: "1xl", md: "3xl", sm:"1xl" } : { base: "1xl", lg:"3xl", md:"2xl"};
+  const labelText = element === "hero" ? { base: "0.5rem",sm: "0.75rem", md: "sm"} : { base: "0.5rem",md: "sm"};
+  
   return (
-    <Box
+        <Box
       bg="gray.800"
-      px={{ base: 2, md: 10, sm:6 }}
+      // px={{ base: 2, md: 10, sm:6 }}
       py={{ base: 4, md: 6 }}
       borderRadius="xl"
       boxShadow="lg"
-      minW={{ base: "60px", md: "120px", sm: "80px"}}
+      minW={{ base: "60px", md: "100px", sm: "80px"}}
     >
       <Text
-        fontSize={{ base: "1xl", md: "3xl", sm:"1xl" }}
+        fontSize={timeText}
         fontWeight="bold"
         lineHeight="1"
       >
         {value}
       </Text>
       <Text
-        fontSize={{ base: "0.5rem", md: "sm", sm: "0.75rem"}}
+        fontSize={labelText}
         textTransform="uppercase"
         letterSpacing="wide"
         opacity={0.7}
@@ -59,7 +62,7 @@ const TimeBlock = ({ value, label }) => {
   );
 };
 
-const CountdownTimer = ({ targetDate, marathon }) => {
+const CountdownTimer = ({ targetDate, marathon, element }) => {
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
 
   if (days + hours + minutes + seconds <= 0) {
@@ -107,10 +110,10 @@ const CountdownTimer = ({ targetDate, marathon }) => {
         mx={"auto"}
         // maxW={"3xl"}
       >
-        <TimeBlock value={days} label="Days" />
-        <TimeBlock value={hours} label="Hours" />
-        <TimeBlock value={minutes} label="Minutes" />
-        <TimeBlock value={seconds} label="Seconds" />
+        <TimeBlock value={days} label="Days" element={element}/>
+        <TimeBlock value={hours} label="Hours" element={element}/>
+        <TimeBlock value={minutes} label="Minutes" element={element}/>
+        <TimeBlock value={seconds} label="Seconds" element={element}/>
       </Flex>
     </Box>
     );

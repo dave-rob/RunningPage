@@ -9,6 +9,8 @@ import {
   Text,
   Container,
   Box,
+  Heading,
+  Image
 } from "@chakra-ui/react";
 import { ChevronRight } from "lucide-react";
 import CountdownTimer from "../components/Landing/Countdown";
@@ -44,7 +46,7 @@ function groupRunsByWeek(runs) {
     weeks[weekKey].runs.push(run);
   });
 
-  console.log(weeks);
+  console.log(weeks)
   return Object.values(weeks).sort(
     (a, b) => new Date(a.weekStart) - new Date(b.weekStart),
   );
@@ -56,17 +58,17 @@ const milesPerWeek = (week) => {
   return mileage.toFixed(2);
 };
 
-export default function Colfax() {
+export default function Colfax({race}) {
   const colfaxRuns = [];
   const [runs, setRuns] = useState([]);
   useEffect(() => {
     const fetchActivities = async () => {
-      // const response = await fetch(
-      //   "http://localhost:5000/api/activities/marathon/colfax",
-      // );
       const response = await fetch(
-        import.meta.env.VITE_API_URL + "api/activities/marathon/colfax",
+        "http://localhost:5000/api/activities/marathon/colfax",
       );
+      // const response = await fetch(
+      //   import.meta.env.VITE_API_URL + "api/activities/marathon/colfax",
+      // );
       const activities = await response.json();
 
       setRuns(activities);
@@ -82,8 +84,20 @@ export default function Colfax() {
   });
 
   return (
+    <>
     <Container width={"100vw"}>
-      <Stack spacing={6} mx={"auto"} px={10} margin={10}>
+      <Stack spacing={6} mx={"auto"} px={10}>
+        <Box width={"100"} >
+        {/* <Image src="/images/Colfax.svg" /> */}
+          <Heading color={"gainsboro"} textAlign={"center"} lineHeight={1.1} marginTop={5}
+                    fontWeight={600}
+                    fontSize={{
+                      base: "3xl",
+                      sm: "4xl",
+                      lg: "6xl",
+                    }}>{race} Marathon Training</Heading>
+        </Box>
+
         <Box width="100%">
           <RunChart weeklyRuns={colfaxRuns} />
         </Box>
@@ -100,6 +114,7 @@ export default function Colfax() {
             <CountdownTimer
               targetDate={"2026-05-17T06:00:00"}
               marathon="Colfax Marathon"
+              element={"compact"}
             />
           </Box>
 
@@ -126,16 +141,19 @@ export default function Colfax() {
           </Box>
         </Flex>
       </Stack>
+      </Container>
+      <Box padding={10} width={"100%"}>
       {groupRunsByWeek(runs)
         .toReversed()
         .map((week) => (
-          <Container key={week.weekStart} marginX={0}>
-            <Collapsible.Root width={"100%"}>
+          <Box key={week.weekStart} maxWidth={"100%"}>
+            <Collapsible.Root>
               <Collapsible.Trigger
                 paddingY="3"
                 display="flex"
                 gap="2"
                 alignItems="center"
+                width={"100%"}
               >
                 <Collapsible.Indicator
                   transition="transform 0.2s"
@@ -144,6 +162,7 @@ export default function Colfax() {
                   <ChevronRight color="white" />
                 </Collapsible.Indicator>
                 <Text color={"white"}> Week {week.weekNum} </Text>
+                <Text color={"white"} ml={"auto"}> {milesPerWeek(week)} miles</Text>
               </Collapsible.Trigger>
               <Separator />
               <Collapsible.Content>
@@ -161,8 +180,9 @@ export default function Colfax() {
                 </Stack>
               </Collapsible.Content>
             </Collapsible.Root>
-          </Container>
+          </Box>
         ))}
-    </Container>
+    </Box>
+    </>
   );
 }
