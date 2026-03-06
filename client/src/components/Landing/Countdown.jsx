@@ -33,7 +33,7 @@ const getReturnValues = (timeLeft) => {
 const TimeBlock = ({ value, label, element }) => {
   const timeText = element === "hero" ? { base: "1xl", md: "3xl", sm:"1xl" } : { base: "1xl", lg:"3xl", md:"2xl"};
   const labelText = element === "hero" ? { base: "0.5rem",sm: "0.75rem", md: "sm"} : { base: "0.5rem",md: "sm"};
-  
+  const boxMedWidth = element === "hero" ? "120px" : "100px";
   return (
         <Box
       bg="gray.800"
@@ -41,7 +41,7 @@ const TimeBlock = ({ value, label, element }) => {
       py={{ base: 4, md: 6 }}
       borderRadius="xl"
       boxShadow="lg"
-      minW={{ base: "60px", md: "100px", sm: "80px"}}
+      minW={{ base: "60px", lg:"140px", md: boxMedWidth, sm: "80px"}}
     >
       <Text
         fontSize={timeText}

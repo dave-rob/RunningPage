@@ -95,7 +95,12 @@ export default function Hero({ raceDate }) {
                       sm: "row",
                     }}
                   >
-                    <Button as={Link} to="/marathon/colfax" rounded="full" size="lg" >
+                    <Button
+                      as={Link}
+                      to="/marathon/colfax"
+                      rounded="full"
+                      size="lg"
+                    >
                       Check Out My Training
                     </Button>
                   </Stack>
