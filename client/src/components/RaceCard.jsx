@@ -42,7 +42,7 @@ export default function RaceCard({
       //     `http://localhost:5000/api/races/${marathon}`,
       //   );
       const response = await fetch(
-        import.meta.env.VITE_API_URL + `api/races/${marathon}`,
+        `${import.meta.env.VITE_API_URL}api/races/${marathon}`,
       );
       const activities = await response.json();
 
