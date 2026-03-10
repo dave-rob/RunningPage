@@ -46,7 +46,7 @@ function groupRunsByWeek(runs) {
     weeks[weekKey].runs.push(run);
   });
 
-  console.log(weeks)
+  // console.log(weeks)
   return Object.values(weeks).sort(
     (a, b) => new Date(a.weekStart) - new Date(b.weekStart),
   );
@@ -63,12 +63,12 @@ export default function Colfax({race}) {
   const [runs, setRuns] = useState([]);
   useEffect(() => {
     const fetchActivities = async () => {
-      // const response = await fetch(
-      //   "http://localhost:5000/api/activities/marathon/colfax",
-      // );
       const response = await fetch(
-        import.meta.env.VITE_API_URL + "api/activities/marathon/colfax",
+        "http://localhost:5000/api/activities/marathon/colfax",
       );
+      // const response = await fetch(
+      //   import.meta.env.VITE_API_URL + "api/activities/marathon/colfax",
+      // );
       const activities = await response.json();
 
       setRuns(activities);

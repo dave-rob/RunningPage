@@ -34,16 +34,16 @@ export default function RaceCard({
   weeks,
   lessons,
 }) {
-  const groupedRuns = [];
+  
   const [runs, setRuns] = useState([]);
   useEffect(() => {
     const fetchActivities = async () => {
-      //   const response = await fetch(
-      //     `http://localhost:5000/api/races/${marathon}`,
-      //   );
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}api/races/${marathon}`,
-      );
+        const response = await fetch(
+          `http://localhost:5000/api/races/${marathon}`,
+        );
+      // const response = await fetch(
+      //   `${import.meta.env.VITE_API_URL}api/races/${marathon}`,
+      // );
       const activities = await response.json();
 
       setRuns(activities);
@@ -52,6 +52,12 @@ export default function RaceCard({
     fetchActivities();
   }, []);
 
+  // const lessonsWithKeys = lessons.map(lesson => ({
+  //   ...lessons,
+  //   key:crypto.randomUUID()
+  // }
+
+  // ))
   return (
     <Container maxW="7xl" py={16}>
       {/* Page Title */}
@@ -112,7 +118,9 @@ export default function RaceCard({
 
             <Stack spacing={2} color="gray.300">
               {lessons.map((l) => (
-                <Text>• {l}</Text>
+                
+                <Text key={crypto.randomUUID()}>• {l}</Text>
+                
               ))}
             </Stack>
           </Box>
