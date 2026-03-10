@@ -17,7 +17,7 @@ export default function RaceHistory() {
       date={"Sep. 28, 2025"}
       fTime={"3:58:55"}
       gTime={"4:00:00"}
-      pace={"8:45 min/mi"}
+      pace={"9:07 min/mi"}
       dates_trained={"May 19, 2025 - Sep. 28, 2025"}
       weeks={19}
       lessons={[
