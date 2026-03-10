@@ -59,7 +59,6 @@ export default function Footer() {
                     </HStack>
                 </Flex>
 
-                {/* Bottom Line */}
                 <Box
                     mt={10}
                     pt={6}
