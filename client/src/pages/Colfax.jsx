@@ -111,7 +111,7 @@ export default function Colfax({race}) {
       textAlign={"center"}
       overflow={"hidden"}
     >
-      <Spinner color={"#FC4C02"} boxSize={"100px"} borderWidth={"4px"} animationDuration={"0.8s"}/> 
+      <Spinner color={"#FC4C02"} boxSize={{base: "230px"}} borderWidth={"4px"} animationDuration={"0.8s"}/> 
       </Container>): (<RunChart weeklyRuns={colfaxRuns} />)}
         </Box>
 
