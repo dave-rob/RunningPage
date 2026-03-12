@@ -10,7 +10,8 @@ import {
   Container,
   Box,
   Heading,
-  Image
+  Image,
+  Spinner
 } from "@chakra-ui/react";
 import { ChevronRight } from "lucide-react";
 import CountdownTimer from "../components/Landing/Countdown";
@@ -61,6 +62,7 @@ const milesPerWeek = (week) => {
 export default function Colfax({race}) {
   const colfaxRuns = [];
   const [runs, setRuns] = useState([]);
+  const [isDataLoading, setIsDataLoading] = useState(true);
   useEffect(() => {
     const fetchActivities = async () => {
       // const response = await fetch(
@@ -72,6 +74,7 @@ export default function Colfax({race}) {
       const activities = await response.json();
 
       setRuns(activities);
+      setIsDataLoading(false);
     };
 
     fetchActivities();
@@ -99,7 +102,17 @@ export default function Colfax({race}) {
         </Box>
 
         <Box width="100%">
-          <RunChart weeklyRuns={colfaxRuns} />
+         {isDataLoading ? (
+           <Container
+     backgroundColor={"gray.900"}
+      marginY={10}
+      paddingY={10}
+      borderRadius={10}
+      textAlign={"center"}
+      overflow={"hidden"}
+    >
+      <Spinner color={"#FC4C02"} boxSize={"100px"} borderWidth={"4px"} animationDuration={"0.8s"}/> 
+      </Container>): (<RunChart weeklyRuns={colfaxRuns} />)}
         </Box>
 
         <Flex direction={{ base: "column", md: "row" }} gap={6} width="100%">
