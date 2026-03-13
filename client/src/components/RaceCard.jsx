@@ -14,11 +14,11 @@ import { useParams } from "react-router-dom";
 
 function Stat({ label, value }) {
   return (
-    <Box minW="150px">
-      <Text fontSize="sm" color="gray.400">
+    <Box minW={{base: "75px", sm:"150px"}}>
+      <Text fontSize={{base: "xs", sm:"sm"}} color="gray.400">
         {label}
       </Text>
-      <Text fontSize="lg" fontWeight="bold">
+      <Text fontSize={{base: "xs", sm:"lg"}} fontWeight="bold">
         {value}
       </Text>
     </Box>
@@ -74,7 +74,7 @@ export default function RaceCard({
         borderRadius="2xl"
         boxShadow="2xl"
         p={8}
-        
+        fontSize={{base: "xs", sm:"md"}}
       >
         <Stack spacing={6}>
           {/* Race Header */}
@@ -86,7 +86,7 @@ export default function RaceCard({
           <Separator borderColor="gray.600" />
 
           {/* Race Stats */}
-          <Flex wrap="wrap" gap={10}>
+          <Flex wrap="wrap" gap={{base: 4, md:10}}>
             <Stat label="Finish Time" value={fTime} />
             <Stat label="Goal Time" value={gTime} />
             <Stat label="Pace" value={pace} />
@@ -96,11 +96,11 @@ export default function RaceCard({
 
           {/* Training Block */}
           <Box>
-            <Heading size="md" mb={4} color="#FC4C02">
+            <Heading size={{base: "sm", sm:"md"}} mb={4} color="#FC4C02">
               Training Block
             </Heading>
 
-            <Flex wrap="wrap" gap={10}>
+            <Flex wrap="wrap" gap={{base: 4, md:10}} >
               <Stat label="Training Period" value={dates_trained} />
               <Stat label="Total Miles" value={runs.totalMiles} />
               <Stat label="Longest Run" value={runs.longestRun} />
@@ -115,7 +115,7 @@ export default function RaceCard({
 
           {/* Lessons */}
           <Box>
-            <Heading size="md" mb={3}>
+            <Heading size={{base: "sm", sm:"md"}} mb={3}>
               Lessons Learned
             </Heading>
 
