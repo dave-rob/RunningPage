@@ -15,7 +15,7 @@ router.get("/:marathon", async (req, res) => {
 
     const filteredRuns = runs.filter((run) => {
       const miles = run.distance / 1609.34;
-      return miles < 26.2;
+      return miles < 26;
     });
     const longestRun =
       Math.max(...filteredRuns.map((run) => run.distance)) / 1609.34;

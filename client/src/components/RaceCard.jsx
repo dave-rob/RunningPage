@@ -7,6 +7,7 @@ import {
   Flex,
   Card,
   Separator,
+  Circle,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -52,31 +53,33 @@ export default function RaceCard({
     fetchActivities();
   }, []);
 
-  // const lessonsWithKeys = lessons.map(lesson => ({
-  //   ...lessons,
-  //   key:crypto.randomUUID()
-  // }
-
-  // ))
   return (
-    <Container maxW="7xl" py={16}>
-      {/* Page Title */}
-      <Heading mb={10} color="#FC4C02">
-        Marathon Journey
-      </Heading>
+    <>
+    <Flex position={"relative"}>
+      <Circle
+        size="20px"
+        // bg={highlight ? "#FC4C02" : "gray.700"}
+        bg={"#FC4C02"}
+        border="3px solid white"
+        position="absolute"
+        left="1px"
+        top={"50%"}
+        transform="translateY(-50%)"
+      />
 
-      {/* Race Card */}
+      <Box width={"100%"} pl={10} py={3}>
       <Card.Root
         bg="gray.800"
         color="white"
         borderRadius="2xl"
         boxShadow="2xl"
         p={8}
+        
       >
         <Stack spacing={6}>
           {/* Race Header */}
           <Box>
-            <Heading size="lg">{marathon}</Heading>
+            <Heading size="lg">{marathon} Marathon</Heading>
             <Text color="gray.400">{date}</Text>
           </Box>
 
@@ -126,6 +129,8 @@ export default function RaceCard({
           </Box>
         </Stack>
       </Card.Root>
-    </Container>
+      </Box>
+      </Flex>
+      </>
   );
 }
