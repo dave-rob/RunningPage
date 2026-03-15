@@ -48,85 +48,8 @@ export default function Hero({ raceDate }) {
         onMouseLeave={autoplay.current.play}
       >
         <Flex>
-          {/* Slide 1 */}
-          <Box
-            flex="0 0 100%"
-            className="hero"
-            backgroundImage={'url("/images/runwithme.jpg")'}
-            backgroundSize={{ base: "cover" }}
-            backgroundPosition={"50% 10%"}
-            backgroundRepeat={"no-repeat"}
-          >
-            <Container maxW="7xl">
-              <Stack
-                align="center"
-                spacing={{ base: 8, md: 10 }}
-                py={{ base: 20, md: 28 }}
-                direction={{ base: "column", lg: "row" }}
-              >
-                <Stack
-                  flex={1}
-                  spacing={{ base: 5, md: 10 }}
-                  textAlign={{ base: "center", lg: "left" }}
-                  align={{ base: "center", lg: "start" }}
-                >
-                  <Heading
-                    lineHeight={1.1}
-                    fontWeight={600}
-                    fontSize={{
-                      base: "3xl",
-                      sm: "4xl",
-                      lg: "6xl",
-                    }}
-                  >
-                    <Text as="span" color="#FC4C02">
-                      Run With Me
-                    </Text>
-                  </Heading>
 
-                  <Text color="black" fontSize={{ base: "md", lg: "lg" }}>
-                    Follow me as I train for my next race
-                  </Text>
-
-                  <Stack
-                    spacing={{ base: 4, sm: 6 }}
-                    direction={{
-                      base: "column",
-                      sm: "row",
-                    }}
-                  >
-                    <Button
-                      as={Link}
-                      to="/marathon/colfax"
-                      rounded="full"
-                      size="lg"
-                    >
-                      Check Out My Training
-                    </Button>
-                  </Stack>
-                </Stack>
-
-                <Flex flex={1} justify="center" align="center">
-                  <Box
-                    position={"relative"}
-                    height={"30%"}
-                    rounded={"2xl"}
-                    boxShadow={"2xl"}
-                    width={"full"}
-                    overflow={"hidden"}
-                  >
-                    <CountdownTimer
-                      targetDate={raceDate}
-                      marathon="Colfax Marathon"
-                      element="hero"
-                    />
-                  </Box>
-                </Flex>
-              </Stack>
-            </Container>
-          </Box>
-
-          {/* Slide 2 */}
+           {/* Slide 2 */}
           <Box
             flex="0 0 100%"
             className="hero"
@@ -206,6 +129,86 @@ export default function Hero({ raceDate }) {
               </Stack>
             </Container>
           </Box>
+
+          {/* Slide 1 */}
+          <Box
+            flex="0 0 100%"
+            className="hero"
+            backgroundImage={'url("/images/runwithme.jpg")'}
+            backgroundSize={{ base: "cover" }}
+            backgroundPosition={"50% 10%"}
+            backgroundRepeat={"no-repeat"}
+          >
+            <Container maxW="7xl">
+              <Stack
+                align="center"
+                spacing={{ base: 8, md: 10 }}
+                py={{ base: 20, md: 28 }}
+                direction={{ base: "column", lg: "row" }}
+              >
+                <Stack
+                  flex={1}
+                  spacing={{ base: 5, md: 10 }}
+                  textAlign={{ base: "center", lg: "left" }}
+                  align={{ base: "center", lg: "start" }}
+                >
+                  <Heading
+                    lineHeight={1.1}
+                    fontWeight={600}
+                    fontSize={{
+                      base: "3xl",
+                      sm: "4xl",
+                      lg: "6xl",
+                    }}
+                  >
+                    <Text as="span" color="#FC4C02">
+                      Run With Me
+                    </Text>
+                  </Heading>
+
+                  <Text color="black" fontSize={{ base: "md", lg: "lg" }}>
+                    Follow me as I train for my next race
+                  </Text>
+
+                  <Stack
+                    spacing={{ base: 4, sm: 6 }}
+                    direction={{
+                      base: "column",
+                      sm: "row",
+                    }}
+                  >
+                    <Button
+                      as={Link}
+                      to="/marathon/colfax"
+                      rounded="full"
+                      size="lg"
+                    >
+                      Check Out My Training
+                    </Button>
+                  </Stack>
+                </Stack>
+
+                <Flex flex={1} justify="center" align="center">
+                  <Box
+                    position={"relative"}
+                    height={"30%"}
+                    rounded={"2xl"}
+                    boxShadow={"2xl"}
+                    width={"full"}
+                    overflow={"hidden"}
+                  >
+                    <CountdownTimer
+                      targetDate={raceDate}
+                      marathon="Colfax Marathon"
+                      element="hero"
+                    />
+                  </Box>
+                </Flex>
+              </Stack>
+            </Container>
+          </Box>
+
+         
           {/* Slide 3 */}
           {/* <Box flex="0 0 100%">
                         <Container maxW="7xl" py={{ base: 20, md: 28 }}>
