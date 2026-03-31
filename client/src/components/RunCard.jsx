@@ -40,7 +40,7 @@ export default function RunCard({run}) {
                 </Container>
 
                 <Card.Body gap="2" backgroundColor={"gray.900"}>
-                <Box>
+                <Box width={{base:180, md:260, sm:180}}>
                   <Card.Title>{run.name}</Card.Title>
                   <Text fontSize={"0.75rem"} marginTop={"-1"}>{formatDate(run.start_date_local)}</Text>
                 </Box>
